@@ -1,0 +1,46 @@
+<div>
+<header>
+  <div class="logo">Tesla Filter App</div>
+</header>
+<div class="container">
+  <!-- User Filter Box -->
+  <div class="filter-box">
+    <h2>User Filter</h2>
+    <input type="text" placeholder="Filter Users" (input)="filterUsers($event)">
+    <div *ngFor="let user of filteredUsers" class="user-box" style="height: 80px;">
+      <p>{{ user.name }} - {{ user.department }}</p>
+    </div>
+  </div>
+
+  <!-- Department Filter Box -->
+  <div class="filter-box">
+    <h2>Department Filter</h2>
+    <input type="text" placeholder="Filter Departments" (input)="filterDepartments($event)">
+    <div *ngFor="let department of filteredDepartments" class="department-box" style="height: 80px;">
+      <p>{{ department }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Table for Departments -->
+<table>
+  <thead>
+    <tr>
+      <th>Finance Department</th>
+      <th>HR Department</th>
+      <th>Manufacturing Department</th>
+      <th>Service Department</th>
+      <th>Delivery Department</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td *ngFor="let department of departments">
+        <div *ngFor="let user of usersFilteredByDepartment(department)">
+          <p>{{ user.name }}</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
